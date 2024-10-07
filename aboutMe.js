@@ -1,33 +1,23 @@
-const personalInformation = {
-    name: 'Gloria Morales',
-    age: 35,
-    born: 'Colombia',
-    living: 'Sweden',
-    Hobbies: 'playing badminton, cooking and walking in the forest.'
+const DELAY = 1000;
+
+const printName = (callback) => {
+    console.log('Hi, my name is Gloria Morales')
+    setTimeout(() => callback && callback(), DELAY)
 }
 
-
-const fetchData = (displayData) => {
-    console.log('Hi, my name is ' + personalInformation.name)
-    setTimeout(() => {
-        const age = 'I am ' + personalInformation.age + ' years old.'
-        displayData(age)
-    }, 2000)
-
-    setTimeout(() => {
-        const location = 'I am from '+ personalInformation.born +', but I am living in ' + personalInformation.living
-        displayData(location)
-    }, 3000)
-
-    setTimeout(() => {
-        const hobbies = 'My hobbies are ' + personalInformation.Hobbies
-        displayData(hobbies)
-    }, 4000)
+const printAge = (callback) => {
+    console.log('I am 35 years old.')
+    setTimeout(() => callback && callback(), DELAY)
 }
 
-// the fallback function
-const displayData = (data) => {
-    console.log(data)
+const printLocation = (callback) => {
+    console.log('I am from Colombia, I am living in Sweden.')
+    setTimeout(() => callback && callback(), DELAY)
 }
 
-fetchData(displayData);
+const printHobbies = (callback) => {
+    console.log('My hobbies are playing badminton, cooking and walking in the forest.')
+    setTimeout(() => callback && callback(), DELAY)
+}
+
+printName(() => printAge(() => printLocation(() => printHobbies() )))
